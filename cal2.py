@@ -25,9 +25,9 @@ try:
     # 写入成员架构表，并生成相应列表
     df_frame = pd.read_excel('./成员架构表.xlsx')
 
-    # 写入国家站点对应
-    # df_site = pd.read_excel('./国家站点对应.xlsx')
-    # df_site = df_site.drop_duplicates(subset=['国家'], keep='first')
+    # 写入国家站点对应 20221117改成表格传入
+    df_site = pd.read_excel('./国家站点对应.xlsx')
+    df_site = df_site.drop_duplicates(subset=['国家'], keep='first')
     data = pd.read_excel('./原始数据.xlsx', header = 1, sheet_name = "sheet1")
     data_all = pd.read_excel('./原始数据.xlsx', header=1, sheet_name="sheet1")
     # data = data.reset_index(drop = True)
@@ -88,20 +88,20 @@ try:
     def turn_per(x):
         return '%.2f%%' % (x * 100)
 
-    # 国家对应站点
-    df_site = pd.DataFrame(data=[['美国', '北美站'],
-                                 ['英国', '欧洲站'],
-                                 ['德国', '欧洲站'],
-                                 ['意大利', '欧洲站'],
-                                 ['西班牙', '欧洲站'],
-                                 ['法国', '欧洲站'],
-                                 ['日本', '日本站'],
-                                 ['墨西哥', '北美站'],
-                                 ['加拿大', '北美站'],
-                                 ['荷兰', '欧洲站'],
-                                 ['瑞典', '欧洲站'],
-                                 ['波兰', '欧洲站']],
-                           columns=['国家', '站点'])
+    # 国家对应站点 20221117改成表格传入
+    # df_site = pd.DataFrame(data=[['美国', '北美站'],
+    #                              ['英国', '欧洲站'],
+    #                              ['德国', '欧洲站'],
+    #                              ['意大利', '欧洲站'],
+    #                              ['西班牙', '欧洲站'],
+    #                              ['法国', '欧洲站'],
+    #                              ['日本', '日本站'],
+    #                              ['墨西哥', '北美站'],
+    #                              ['加拿大', '北美站'],
+    #                              ['荷兰', '欧洲站'],
+    #                              ['瑞典', '欧洲站'],
+    #                              ['波兰', '欧洲站']],
+    #                        columns=['国家', '站点'])
     # 取所有负责人列表
     # print(data["负责人"])
     data["负责人"] = data["负责人"].fillna(';')
